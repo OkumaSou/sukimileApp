@@ -1,5 +1,7 @@
 import os
 import dj_database_url #追加
+import django_heroku
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +28,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', #追加
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'myapp.urls' #ご自身のアプリ名
@@ -85,11 +89,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS =(
-    os.path.join(BASE_DIR, 'static')
-)
+# STATICFILES_DIRS =(
+#     os.path.join(BASE_DIR, 'static')
+# )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') #追加
 
